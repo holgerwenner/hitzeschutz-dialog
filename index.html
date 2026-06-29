@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hitze trifft uns alle – Hitzeschutz-Dialog</title>
+<meta name="description" content="Überparteilicher Dialog zu Hitzeschutz und Klimaanpassung. Ihre Meinung zählt – und entwickelt sich mit jeder Runde weiter.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-mid: #555;
+    --ink-soft: #888;
+    --bg: #ffffff;
+    --bg-soft: #fbf5ee;
+    --accent: #d2691e;
+    --accent-deep: #a8500f;
+    --border: #e2ddd5;
+    --radius: 8px;
+    --max: 720px;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink);
+    background: var(--bg);
+  }
+
+  a { color: var(--accent-deep); }
+
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .site-header .region-tag {
+    font-size: 12px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .hero {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-eyebrow {
+    font-size: 13px;
+    color: var(--accent-deep);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-size: clamp(24px, 5vw, 34px);
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 1.25rem;
+  }
+  .hero-lead {
+    font-size: 17px;
+    color: var(--ink-mid);
+    margin-bottom: 2rem;
+    max-width: 580px;
+  }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2.5rem;
+  }
+  .pill {
+    font-size: 13px;
+    padding: 5px 13px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--ink-mid);
+    background: var(--bg-soft);
+  }
+
+  .cta-area {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .cta-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 26px;
+    border-radius: var(--radius);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: var(--accent-deep); }
+  .cta-note {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .qr-box {
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .qr-box img {
+    width: 120px;
+    height: 120px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px;
+    background: #fff;
+  }
+  .qr-box p {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+
+  .section {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .section p {
+    font-size: 15px;
+    color: var(--ink-mid);
+    max-width: 580px;
+  }
+
+  .dialog-note {
+    background: var(--bg-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-top: 1.5rem;
+    font-size: 14px;
+    color: var(--ink-mid);
+    max-width: 560px;
+  }
+  .dialog-note strong { color: var(--ink); }
+
+  .q-preview {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .q-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+  }
+  .q-text {
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  .q-btns {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .q-btn {
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--ink-mid);
+  }
+  .q-btn.yes { color: #1a7a3c; border-color: #a8d5b5; background: #f0faf3; }
+  .q-btn.no  { color: #a32d2d; border-color: #f0b0b0; background: #fdf3f3; }
+
+  .blocks-grid {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+  }
+  .block-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.9rem 1rem;
+  }
+  .block-card .block-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-deep);
+    margin-bottom: 4px;
+  }
+  .block-card .block-desc {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .steps {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+    position: relative;
+  }
+  .step {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 1.5rem;
+    position: relative;
+  }
+  .step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 33px;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+  .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-deep);
+    flex-shrink: 0;
+  }
+  .step-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    padding-top: 5px;
+  }
+  .step-desc {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.55;
+  }
+
+  .site-footer {
+    background: var(--bg-soft);
+  }
+  .footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .footer-note {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 400px;
+  }
+  .badges {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .badge {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    background: var(--bg);
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  @media (max-width: 520px) {
+    .hero { padding: 2.5rem 1.25rem 2rem; }
+    .section { padding: 2rem 1.25rem; }
+    .footer-inner { flex-direction: column; }
+    .cta-area { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="region-tag">Hitzeschutz</span>
+  <span style="color: var(--border)">·</span>
+  <span class="region-tag">Klimaanpassung vor Ort</span>
+</header>
+
+<main>
+
+  <section class="hero">
+    <p class="hero-eyebrow">&#x25CF; Bürgerdialog</p>
+    <h1>Hitze trifft uns alle – aber nicht alle gleich.</h1>
+    <p class="hero-lead">
+      Hitzewellen werden häufiger und intensiver. Sie betreffen, wie wir bauen,
+      wie wir arbeiten, und wer besonders geschützt werden muss – von
+      Pflegeheimen bis zu Menschen, die im Freien arbeiten.
+    </p>
+    <div class="pills">
+      <span class="pill">&#x1F321;&#xFE0F; Hitzeschutz</span>
+      <span class="pill">&#x1F3D7;&#xFE0F; Stadtplanung &amp; Grün</span>
+      <span class="pill">&#x1F465; Vulnerable Gruppen</span>
+    </div>
+    <div class="cta-area">
+      <div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://pol.is/EUER-LINK-HIER" target="_blank" rel="noopener">
+            Jetzt mitreden &#x2192;
+          </a>
+        </div>
+        <p class="cta-note" style="margin-top:10px">Anonym &nbsp;·&nbsp; kostenlos &nbsp;·&nbsp; 5 Minuten</p>
+      </div>
+      <div class="qr-box">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAADI0lEQVR4nO2cQY7bMAxFH2sDs5SBOUCOIt+gRyp6pLlBfJQ5QAF5GUDG70KW4rSbTtPGmYTexE78EApmRPKLiokPH9OXjzPgkEMOOeSQQw49JmTr0QOzWXlvnM1snM1grjeMu5jn0O2hKElKwHSQbGQxoJO+H6RyJkmX0O3Mc+h2UL++zgPEN7D43meYBwQnA/oMgEGXb26eQ/tD07CYjkGCuUdKYON/+SaHPgcUUycmM7MxSGaHk+l4P+Y59L+hGjWCgBkgnEzQZabhRy9AFt9gq2Td+ZgcugZaPWIq9UUHzK+ymF6x+P4ii2+vGUqiuYN5Dt0cKh6xnQBCbmcnYzpkdHnD3Y/JoWsgSlUZEwCddAwZCCpnUuq2n0qSjnc+JoeugVgfMgBBKspEqTUAHaEUHOWW6B7x6FCJGha19GI2VKSI2dD0NQEhAXTZYhpq8LjzMTl0DbRVqErBQZeNkDCw1TcIGaZhB/Mc2heae2wMGem9LxHCvqVOZsNiECQb9zTPoVtALY/oWvbQCUKmvtfOwPOIJ4CqRzRniKkWHDG1S9aCw2uNx4fWzBIM4pHz+haCjKahA1hM0+ArXc8ArT/7cqROkjJrrAhNqKgahUeNx4c4O0N58DFRAoakDFG56RGde8QTQFWz1KpPrkplvaQlmp5HPAl04RG6yCdL01TVs3EV+zmglke0Z56gVJ8lraiXnkc8FWQjlDnCxlpp2hgyZocMzC/VN3Yxz6F984gqWJWqo2oUNbD4HPHgUFvXeJWt7VNLTxRYfBuw0iwTTqbp3DRz52Ny6BpoM0ds88kmYJ9jRWyyhc8RjwxdKFQ6r2vUvRlRaz5ZQ4d7xFNA5z1dOrIYMa2LnTqWPV09wFK7sj/FmBy6Mmo04ZLutz8QiNpOGT5HPAU0102dUSdbpewmXE5mtm3J/SRjcuifQJP1pV9K3+1FpcxoW7z2N8+h20N1xdO+JbBx7iG+m23aZj7fmBz68+PXPV1rvhByL+bFmA65Z/oqtlt47nxMDl0DUWtOgCpgF3mCoFW7jq1nwvWIh4fM/5nMIYcccsghhxz6S+gngBh7LQB3zbsAAAAASUVORK5CYII=" alt="QR-Code zur Befragung">
+        <p>am Stand scannen</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Ein Dialog, kein Schlussstrich</h2>
+    <p>
+      Diese Befragung ist ein erster Schritt. Bewerten Sie die folgenden Aussagen:
+      zustimmen, ablehnen oder überspringen. Sie können auch selbst eine eigene
+      Aussage hinzufügen – sie wird dann anderen zur Bewertung angezeigt.
+    </p>
+    <div class="dialog-note">
+      <strong>So geht es weiter:</strong> Die Ergebnisse fließen in eine nächste,
+      erweiterte Runde ein. Auch wer später dazukommt, sieht die bisherigen
+      Kernfragen und kann mitentscheiden, wohin sich das Bild weiterentwickelt.
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Worum es geht</h2>
+    <div class="blocks-grid">
+      <div class="block-card">
+        <p class="block-title">Verbindlichkeit &amp; Zuständigkeit</p>
+        <p class="block-desc">Wer ist verantwortlich – Bund, Land oder Kommune?</p>
+      </div>
+      <div class="block-card">
+        <p class="block-title">Vulnerable Gruppen &amp; Gesundheit</p>
+        <p class="block-desc">Wie schützen wir Ältere, Kranke und Pflegebedürftige?</p>
+      </div>
+      <div class="block-card">
+        <p class="block-title">Stadtplanung &amp; Grün</p>
+        <p class="block-desc">Begrünung, Entsiegelung, Bauvorschriften</p>
+      </div>
+      <div class="block-card">
+        <p class="block-title">Arbeit &amp; Alltag</p>
+        <p class="block-desc">Hitzefrei, Schutz im Freien, Wissen im Alltag</p>
+      </div>
+      <div class="block-card">
+        <p class="block-title">Finanzierung &amp; Förderung</p>
+        <p class="block-desc">Wer trägt die Kosten des Hitzeschutzes?</p>
+      </div>
+    </div>
+
+    <div class="q-preview" style="margin-top: 1.75rem">
+      <div class="q-card">
+        <p class="q-text">„Es sollte ein gesetzliches Recht auf Hitzefrei bei der Arbeit geben, wenn bestimmte Temperaturen überschritten werden."</p>
+        <div class="q-btns">
+          <span class="q-btn yes">&#x2713; Zustimmen</span>
+          <span class="q-btn no">&#x2715; Ablehnen</span>
+          <span class="q-btn">&#x2013; Überspringen</span>
+        </div>
+      </div>
+      <div class="q-card">
+        <p class="q-text">„Kommunen sollten selbst entscheiden können, wie sie ihr Geld für Hitzeschutz einsetzen – ohne strenge Bundesvorgaben."</p>
+        <div class="q-btns">
+          <span class="q-btn yes">&#x2713; Zustimmen</span>
+          <span class="q-btn no">&#x2715; Ablehnen</span>
+          <span class="q-btn">&#x2013; Überspringen</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>So funktioniert es</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <p class="step-title">Aussagen bewerten</p>
+          <p class="step-desc">Zustimmen, ablehnen oder überspringen – keine Anmeldung nötig.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <p class="step-title">Eigene Aussage einbringen</p>
+          <p class="step-desc">Ihr Gedanke wird anderen Teilnehmenden direkt zur Bewertung angezeigt.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <p class="step-title">Gemeinsames Bild entsteht</p>
+          <p class="step-desc">Sichtbar wird, wo trotz unterschiedlicher Meinungen breiter Konsens besteht.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <p class="step-title">Nächste Runde, gleicher Dialog</p>
+          <p class="step-desc">Die stärksten neuen Fragen werden in die nächste, erweiterte Befragung übernommen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-note">
+      Dieser Dialog ist überparteilich und unabhängig angelegt. Er gehört
+      allen, die sich beteiligen – nicht denen, die ihn angestoßen haben.
+      Keine Anmeldung erforderlich. Ihre Antworten sind anonym.
+    </p>
+    <div class="badges">
+      <span class="badge">&#x1F512; Anonym</span>
+      <span class="badge">&#x1F465; Überparteilich</span>
+      <span class="badge">&#x2714; Keine Registrierung</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
